@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClient } from '@supabase/ssr'
 import { useRouter } from 'next/navigation'
 import './login.css'
 
@@ -19,7 +19,26 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null)
 
   const router = useRouter()
-  const supabase = createClientComponentClient()
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return document.cookie
+            .split('; ')
+            .find((row) => row.startsWith(`${name}=`))
+            ?.split('=')[1]
+        },
+        set(name: string, value: string, options: { [key: string]: any }) {
+          document.cookie = `${name}=${value}; path=/; max-age=${options['max-age'] || 0}`
+        },
+        remove(name: string, options: { [key: string]: any }) {
+          document.cookie = `${name}=; path=/; max-age=0`
+        },
+      },
+    }
+  )
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
