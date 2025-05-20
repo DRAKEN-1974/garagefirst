@@ -1,0 +1,285 @@
+.form {
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  background: white;
+  border-radius: 1rem;
+}
+
+.form h2 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.error {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.formGroup input:hover,
+.formGroup textarea:hover {
+  border-color: #d1d5db;
+}
+
+.formGroup input[type="datetime-local"] {
+  color: #374151;
+  background-color: white;
+}
+
+.formGroup textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #9ca3af;
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.submitButton,
+.cancelButton {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submitButton {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.submitButton:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  background-color: white;
+  color: #4b5563;
+  border: 2px solid #e5e7eb;
+}
+
+.cancelButton:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .form {
+    padding: 1.5rem;
+  }
+
+  .formActions {
+    flex-direction: column-reverse;
+  }
+
+  .submitButton,
+  .cancelButton {
+    width: 100%;
+  }
+
+  .form h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .form {
+    background: #1f2937;
+  }
+
+  .form h2 {
+    color: #f3f4f6;
+  }
+
+  .formGroup label {
+    color: #e5e7eb;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #f3f4f6;
+  }
+
+  .formGroup input:hover,
+  .formGroup textarea:hover {
+    border-color: #6b7280;
+  }
+
+  .formGroup input:focus,
+  .formGroup textarea:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.1);
+  }
+
+  .formGroup input::placeholder,
+  .formGroup textarea::placeholder {
+    color: #9ca3af;
+  }
+
+  .cancelButton {
+    background-color: #374151;
+    color: #e5e7eb;
+    border-color: #4b5563;
+  }
+
+  .cancelButton:hover {
+    background-color: #4b5563;
+    border-color: #6b7280;
+  }
+
+  .error {
+    background-color: rgba(220, 38, 38, 0.1);
+    border: 1px solid #dc2626;
+  }
+}
+
+/* Focus states for accessibility */
+.formGroup input:focus-visible,
+.formGroup textarea:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.submitButton:focus-visible,
+.cancelButton:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Loading state */
+.submitButton:disabled {
+  position: relative;
+}
+
+.submitButton:disabled::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Helper classes */
+.required::after {
+  content: '*';
+  color: #dc2626;
+  margin-left: 4px;
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* Validation states */
+.formGroup input:invalid,
+.formGroup textarea:invalid {
+  border-color: #dc2626;
+}
+
+.formGroup input:valid,
+.formGroup textarea:valid {
+  border-color: #059669;
+}
+
+/* Custom datetime picker styling */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}

@@ -1,0 +1,238 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #111111;
+  color: #ffffff;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+.shopContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.heroSection {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 4rem 0;
+  background: linear-gradient(to right, #1a1a1a, #2a2a2a);
+  border-radius: 1rem;
+}
+
+.heroSection h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #ffffff, #cccccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.coinDisplay {
+  display: inline-flex;
+  align-items: center;
+  background: #222222;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.coinIcon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.coinBalance {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+  margin-right: 0.5rem;
+}
+
+.coinLabel {
+  color: #888888;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.controls {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.searchBar {
+  flex: 1;
+  min-width: 300px;
+}
+
+.searchBar input {
+  width: 100%;
+  padding: 1rem;
+  background: #222222;
+  border: 1px solid #333333;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.filterSort {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filterSort select {
+  padding: 0.75rem 1rem;
+  background: #222222;
+  border: 1px solid #333333;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.sortButton {
+  padding: 0.75rem 1rem;
+  background: #222222;
+  border: 1px solid #333333;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sortButton:hover {
+  background: #333333;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.productCard {
+  background: #222222;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  border: 1px solid #333333;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+}
+
+.productContent {
+  padding: 1.5rem;
+}
+
+.productContent h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.productContent p {
+  color: #888888;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.productMeta {
+  margin-bottom: 1rem;
+}
+
+.pricing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.coins {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.stock {
+  font-size: 0.875rem;
+}
+
+.inStock {
+  color: #00ff00;
+}
+
+.outOfStock {
+  color: #ff0000;
+}
+
+.purchaseButton {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.purchaseButton:hover:not(:disabled) {
+  background: #eeeeee;
+}
+
+.purchaseButton:disabled {
+  background: #333333;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.error {
+  background: #ff000022;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 2rem 0;
+  }
+
+  .heroSection h1 {
+    font-size: 2rem;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .searchBar {
+    min-width: 100%;
+  }
+
+  .filterSort {
+    flex-wrap: wrap;
+  }
+
+  .filterSort select,
+  .sortButton {
+    flex: 1;
+  }
+}
